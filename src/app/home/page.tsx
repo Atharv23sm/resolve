@@ -14,11 +14,11 @@ export default function Home(){
 
   useEffect(() => {
     const getUser = async () => {
-      const res = await axios.get(`${baseUrl}/users/getdata`)
+      const res = await axios.get(`${baseUrl}users/getdata`)
       res && setUser(res.data.data)
     }
     const getQuestions = async () => {
-      const res = await axios.get(`${baseUrl}/questions/getquestions`)
+      const res = await axios.get(`${baseUrl}questions/getquestions`)
       res && setQuestions(res.data.data)
     }
     getUser()

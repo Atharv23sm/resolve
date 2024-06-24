@@ -23,7 +23,7 @@ export default function SignupPage() {
         e.preventDefault()
         setLoading(true)
 
-        const response = await axios.post(`${baseUrl}/users/signup`, signupData)
+        const response = await axios.post(`${baseUrl}users/signup`, signupData)
         if (response.data.success) {
             router.push("/login")
         }

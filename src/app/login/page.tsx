@@ -23,7 +23,7 @@ export default function LoginPage() {
     setLoading(true)
 
     const url = "http://localhost:3000"
-    const response = await axios.post(`${baseUrl}/users/login`, loginData)
+    const response = await axios.post(`${baseUrl}users/login`, loginData)
     if (response.data.success) {
       router.push("/home")
     }
