@@ -27,7 +27,7 @@ function Index() {
                         <span className="font-bold">Welcome to Resolve,</span><br />
                         Your go-to platform for insightful discussions and expert advice on a wide range of topics.
                         Resolve is designed to connect curious minds with knowledgeable individuals from various fields and communities.
-                        Whether you're seeking practical solutions, exploring diverse perspectives, or simply sharing your expertise,
+                        Whether you&apos;re seeking practical solutions, exploring diverse perspectives, or simply sharing your expertise,
                         Resolve provides a space where questions find answers and where meaningful conversations thrive.
                         Join our vibrant community today.
                     </div>
@@ -46,7 +46,7 @@ function Index() {
                         <div className="flex justify-between">
                             <div className="size-8 md:size-10 rounded-full bg-white" />
                             <div className="w-[82%] bg-[#115] p-4">Improving productivity while working from home can be achieved through a combination of strategies tailored to your work style and environment. Here are a few tips that can help:
-                                <br /><br />1. Create a dedicated workspace: Designate a specific area in your home where you can work without distractions. Ensure it's comfortable, well-lit, and organized with all the tools and materials you need.
+                                <br /><br />1. Create a dedicated workspace: Designate a specific area in your home where you can work without distractions. Ensure it&apos;s comfortable, well-lit, and organized with all the tools and materials you need.
                                 <br /><br />2. Establish a Routine: Set a regular schedule and stick to it. This includes waking up at the same time each day, starting work at a consistent hour, and scheduling breaks.
                                 <br /><br />3 .Set Clear Goals: Outline what you need to accomplish each day or week. Breaking tasks into smaller, manageable chunks can make them less overwhelming.
                             </div>
@@ -71,7 +71,7 @@ function Index() {
                             <div className="w-[82%] bg-[#115] p-4">
                                 1. Casablanca (1942)
                                 <br /><br />2. The Godfather (1972)
-                                <br /><br />3. Schindler's List (1993) 
+                                <br /><br />3. Schindler&apos;s List (1993) 
                                 <br /><br />4. The Dark Knight (2008) 
                                 <br /><br />5. Interstellar (2014)  
                                 <br /><br />6. The Matrix (1999)

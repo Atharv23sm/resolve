@@ -7,7 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ButtonLoading from "../components/ButtonLoading";
 import Link from "next/link";
 
-export default function loginPage() {
+export default function LoginPage() {
   const [loginData, setloginData] = useState({ email: "", password: "" })
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const [loading, setLoading] = useState(false)
