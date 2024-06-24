@@ -29,7 +29,6 @@ export default function LoginPage() {
       setError(response.data.error)
       setLoading(false)
     }
-    // console.log(response.data)
   };
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function LoginPage() {
     <div className="w-full min-h-screen bg-black flex justify-center md:items-center xs:py-[20vh] px-[6vw]">
       <div className="h-max flex flex-col md:flex-row justify-center gap-[6vw] md:gap-[8vw] lg:border-8 lg:p-10">
         <div className="xs:text-[3rem] sm:text-[3.5rem] md:text-[4rem] xs:leading-[3rem] sm:leading-[3.5rem] md:leading-[4rem] flex flex-col justify-center font-extrabold bg-gradient-to-r from-white to-[#98f] bg-clip-text text-transparent">
-          <div>WECLOME</div>
+          <div>WELCOME</div>
         </div>
         <form onSubmit={onSubmit} className="flex flex-col items-center md:items-start gap-4">
           <div className="w-[250px] text-left font-bold text-xl">Login</div>
