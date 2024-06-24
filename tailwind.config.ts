@@ -1,3 +1,4 @@
+import { TbBackground } from "react-icons/tb";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -8,10 +9,32 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      keyframes:{
+        index:{
+          '0%':{transform:'translateX(-100%)'},
+          '58%':{transform:'translateX(100%)', opacity:'0'},
+          '59%':{transform:'translateX(-100%)', opacity:'0'},
+          '100%':{transform:'translateX(-100%)', opacity:'1'}
+        },
+        slide1:{
+          '0%':{transform:'translateX(100%)'},
+          '100%':{transform:'translateX(0%)'},
+        },
+        slide2:{
+          '0%':{transform:'translateX(-100%)'},
+          '100%':{transform:'translateX(0%)'},
+        },
+        opac:{
+          '0%':{opacity:'0'},
+          '100%':{opacity:'1'},
+        }
+      },
+      screens: {
+        'xs': '240px',
+        'sm': '480px',
+        'md': '720px',
+        'lg': '1000px',
+        'xl': '1200px',
       },
     },
   },

@@ -1,33 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Figtree');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.auth-input {
+    width: 250px;
+    padding: 0.4rem;
+    background: #0000;
+    border:solid 1px #fff8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.topic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:0.2px solid white;
+    padding:10px 0;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+::-webkit-scrollbar-track {
+    background: white;
 }
+
+::-webkit-scrollbar-thumb {
+    background: #53f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #98f;
+}
+
