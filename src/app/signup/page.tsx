@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ButtonLoading from "../components/ButtonLoading";
 import Link from "next/link";
+import {baseUrl} from '@/utils/baseUrl'
 
 export default function SignupPage() {
 
@@ -22,7 +23,7 @@ export default function SignupPage() {
         e.preventDefault()
         setLoading(true)
 
-        const response = await axios.post("/api/users/signup", signupData)
+        const response = await axios.post(`${baseUrl}/users/signup`, signupData)
         if (response.data.success) {
             router.push("/login")
         }

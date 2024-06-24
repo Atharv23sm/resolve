@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { GrLogout } from 'react-icons/gr';
 import { useRouter } from "next/navigation";
+import { baseUrl } from '@/utils/baseUrl';
 
 export default function Home(){
   const [questions, setQuestions] = useState([])
@@ -13,11 +14,11 @@ export default function Home(){
 
   useEffect(() => {
     const getUser = async () => {
-      const res = await axios.get("/api/users/getdata")
+      const res = await axios.get(`${baseUrl}/users/getdata`)
       res && setUser(res.data.data)
     }
     const getQuestions = async () => {
-      const res = await axios.get("/api/questions/getquestions")
+      const res = await axios.get(`${baseUrl}/questions/getquestions`)
       res && setQuestions(res.data.data)
     }
     getUser()

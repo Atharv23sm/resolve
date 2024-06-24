@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ButtonLoading from "../components/ButtonLoading";
 import Link from "next/link";
+import { baseUrl } from "@/utils/baseUrl";
 
 export default function LoginPage() {
   const [loginData, setloginData] = useState({ email: "", password: "" })
@@ -21,7 +22,8 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
 
-    const response = await axios.post("/api/users/login", loginData)
+    const url = "http://localhost:3000"
+    const response = await axios.post(`${baseUrl}/users/login`, loginData)
     if (response.data.success) {
       router.push("/home")
     }
