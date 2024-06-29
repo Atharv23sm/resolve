@@ -16,8 +16,8 @@ export default function Sidebar() {
         <>
             <div className={`absolute h-full bg-black overflow-x-hidden overflow-y-scroll top-0 left-0 z-20 ${showSidebar ? 'ml-0' : '-ml-[50vw]'} md:ml-0 w-[50vw] md:w-[25vw] lg:w-[20vw] border-r-2 border-b-2 border-[#fff4] p-4 duration-300`}>
                 <div className='text-lg font-extrabold leading-none'>Topics</div>
-                <div className="space-y-2 flex flex-wrap py-2 md:py-4">
-                    <div className="w-full flex gap-2 items-center">
+                <div className="space-y-2 flex flex-wrap py-4">
+                    <div className="w-full flex gap-4 items-center">
                         <input type="search" placeholder="search" className="w-full p-2 border outline-none bg-[#222]" onChange={(e:any)=>setSearch(e.target.value)}/>
                         <GrSearch size={24} className="cursor-pointer" onClick={() => router.push(`/home/topic/${search}`)}/>
                     </div>
@@ -32,10 +32,10 @@ export default function Sidebar() {
                         }
                     )}
                 </div>
-                <BsArrowLeftSquare className="absolute top-4 right-4 md:hidden" size={20} onClick={() => setShowSidebar(false)} />
+                <BsArrowLeftSquare className="absolute top-4 right-4 cursor-pointer md:hidden" size={20} onClick={() => setShowSidebar(false)} />
             </div>
             <div className="absolute top-0 left-0">
-                <HiBars3BottomLeft className="absolute top-2 left-2 md:hidden" size={24} onClick={() => setShowSidebar(true)} />
+                <HiBars3BottomLeft className="absolute top-2 left-2 cursor-pointer md:hidden" size={24} onClick={() => setShowSidebar(true)} />
             </div>
         </>
     )

@@ -30,7 +30,7 @@ export default function Topic({ params, }: { params: { username: string } }) {
 
   return (
     <div className='md:ml-[25vw] lg:ml-[20vw]'>
-      <div className='p-4 font-bold'>My Questions</div>
+      <div className='pt-10 md:pt-4 p-4 font-bold'>My Questions</div>
       <Questions questions={myQuestions} loading={loading} error={error} />
     </div>
   )
