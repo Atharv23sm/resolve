@@ -1,12 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import ButtonLoading from "../components/ButtonLoading";
-import Link from "next/link";
 import { baseUrl } from "@/utils/baseUrl";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import axios from "axios";
+import Link from "next/link";
+import ButtonLoading from "../components/Loaders/ButtonLoading";
+import Error from "../components/Errors/Error";
 
 export default function LoginPage() {
   const [loginData, setloginData] = useState({ email: "", password: "" })
@@ -22,13 +23,17 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
 
-    const url = "http://localhost:3000"
-    const response = await axios.post(`${baseUrl}users/login`, loginData)
-    if (response.data.success) {
-      router.push("/home")
-    }
-    else {
-      setError(response.data.error)
+    try {
+      const response = await axios.post(`${baseUrl}users/login`, loginData)
+      if (response.data.success) {
+        router.push("/home")
+      }
+      else {
+        setError(response.data.error)
+        setLoading(false)
+      }
+    } catch (e: any) {
+      setError(e.message)
       setLoading(false)
     }
   };
@@ -46,13 +51,13 @@ export default function LoginPage() {
         </div>
         <form onSubmit={onSubmit} className="flex flex-col items-center md:items-start gap-4">
           <div className="w-[250px] text-left font-bold text-xl">Login</div>
-          {error && <div className="text-[#f22]">{error}</div>}
+          {error && <Error error={error} />}
           <input type="email" onChange={(e) => { setError(""); setloginData({ ...loginData, email: e.target.value }) }} placeholder="email" required className="auth-input" />
           <div className="w-max h-max flex items-center relative">
-            <input type={passwordType} onChange={(e) => { setError(""); setloginData({ ...loginData, password: e.target.value })}} placeholder="password" required maxLength={16} className="auth-input" />
+            <input type={passwordType} onChange={(e) => { setError(""); setloginData({ ...loginData, password: e.target.value }) }} placeholder="password" required maxLength={16} className="auth-input" />
             {passwordType === 'password' ? <FaEye className="absolute right-2" onClick={togglePasswordVisibility} /> : <FaEyeSlash className="absolute right-2" onClick={togglePasswordVisibility} />}
           </div>
-          <button type="submit" disabled={buttonDisabled && true} className={`w-[250px] p-2 ${!loading && 'bg-[#53f]'} flex justify-center`} >
+          <button type="submit" disabled={buttonDisabled && true} className={`w-[250px] p-2 ${!loading && 'bg-[#53f] hover:bg-[#75f]'} flex justify-center`} >
             <div className={`${buttonDisabled && 'text-[#fff8]'} flex justify-center`}>{loading ? <ButtonLoading /> : 'Login'}</div>
           </button>
           <div>New user? <Link href="/signup" className="text-[#75f] font-bold underline">Sign up</Link> now.</div>

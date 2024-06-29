@@ -1,0 +1,1 @@
+export default function Error ({error}:any){ return <div className="font-bold text-[#f00]">{error}</div>}

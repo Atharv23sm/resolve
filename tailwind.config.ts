@@ -9,24 +9,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      keyframes:{
-        index:{
-          '0%':{transform:'translateX(-100%)'},
-          '58%':{transform:'translateX(100%)', opacity:'0'},
-          '59%':{transform:'translateX(-100%)', opacity:'0'},
-          '100%':{transform:'translateX(-100%)', opacity:'1'}
+      keyframes: {
+        index: {
+          '0%': { transform: 'translateX(-100%)' },
+          '58%': { transform: 'translateX(100%)', opacity: '0' },
+          '59%': { transform: 'translateX(-100%)', opacity: '0' },
+          '100%': { transform: 'translateX(-100%)', opacity: '1' }
         },
-        slide1:{
-          '0%':{transform:'translateX(100%)'},
-          '100%':{transform:'translateX(0%)'},
-        },
-        slide2:{
-          '0%':{transform:'translateX(-100%)'},
-          '100%':{transform:'translateX(0%)'},
-        },
-        opac:{
-          '0%':{opacity:'0'},
-          '100%':{opacity:'1'},
+        opac: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         }
       },
       screens: {

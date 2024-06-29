@@ -1,15 +1,16 @@
+import Link from "next/link"
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa"
 
 export default function Footer() {
   return (
-    <div className="w-full p-10 bg-black border-t space-y-4">
-        <div className="text-center">Join the conversation</div>
-        <div className="w-full flex justify-center items-center gap-4">
-            <FaInstagram size={20}/>
-            <FaGithub size={20}/>
-            <FaLinkedin size={20}/>
+    <div className="w-full p-10 bg-black border-t text-right space-y-4">
+        <div>Join the conversation</div>
+        <div className="w-full flex items-center justify-end gap-4">
+            <Link href={'https://instagram.com/atharv_mahabal'}><FaInstagram size={28} className="hover:bg-[#f03] duration-500 rounded-md p-1"/></Link>
+            <Link href={'https://github.com/atharv23sm'}><FaGithub size={28} className="hover:bg-[#116] duration-500 rounded-md p-1"/></Link>
+            <Link href={''}><FaLinkedin size={28} className="hover:bg-[#33f] duration-500 rounded-md p-1"/></Link>
         </div>
-        <div className="text-center text-xs text-[#fff6]">Build by Atharv Mahabal</div>
+        <div className="text-xs text-[#fff6]">Build by Atharv Mahabal</div>
     </div>
   )
 }

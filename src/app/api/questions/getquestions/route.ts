@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import Question from "@/models/questionModel";
 import { connect } from "@/dbConfig/dbConfig";
 
 connect();
 
-export async function GET(request:NextRequest){
+export async function GET(){
     try {
-        const allQuestions = await Question.find();
+        const allQuestions = await Question.find().sort({date:-1})
         return NextResponse.json({ message: "Questions found", data: allQuestions })
     }
     catch (err:any) {
