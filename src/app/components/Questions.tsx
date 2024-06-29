@@ -15,7 +15,7 @@ export default function Questions({ questions, loading, error }: any) {
                         <div className='text-center p-4'>No results.</div> :
                         questions.map((q: any) => {
                             return (
-                                <div key={q?._id} className='p-4 space-y-4 border-b-2 border-[#fff4] cursor-pointer'
+                                <div key={q?._id} className='pt-10 md:pt-0 p-4 space-y-4 border-b-2 border-[#fff4] cursor-pointer'
                                     onClick={() => router.push(`/home/question/${q?._id}`)}>
                                     <div className='text-xs flex justify-between'>
                                         <div>{q?.username}

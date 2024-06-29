@@ -75,7 +75,7 @@ export default function Question({ params, }: { params: { questionId: any } }) {
         <div className={`md:ml-[25vw] lg:ml-[20vw] ${loading && 'pt-10'}`}>
             {error && <Error error={error} />}
             {!loading ? <>
-                <div className={`p-4 space-y-4`}>
+                <div className={`pt-10 md:pt-0 p-4 space-y-4`}>
                     <div className='text-xs flex justify-between'>
                         <div>{question?.username}
                             <span className='text-[#fffa]'> is asking,</span>
