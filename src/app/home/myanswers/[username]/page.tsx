@@ -29,7 +29,7 @@ export default function Question({ params, }: { params: { username: any } }) {
   useEffect(() => {
     setLoading(true)
     getMyAnswers()
-  }, [getMyAnswers])
+  }, [])
 
   return (
     <div className={`md:ml-[25vw] lg:ml-[20vw] ${loading && 'pt-10'}`}>

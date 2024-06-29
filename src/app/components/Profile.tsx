@@ -18,7 +18,7 @@ export default function Profile({profileVisible, setProfileVisible}:any) {
 
   useEffect(() => {
     getUser()
-  }, [getUser])
+  }, [])
 
   async function logout() {
     if (confirm("Are you sure? you're logging out.")) {

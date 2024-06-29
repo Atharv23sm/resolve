@@ -8,7 +8,7 @@ function Index() {
     const [scrollAmt, setScrollAmt] = useState(0)
     useEffect(()=>{
         addEventListener('scroll',()=>setScrollAmt(Math.trunc(window.scrollY)))
-    })
+    },[])
     
     return (
 
