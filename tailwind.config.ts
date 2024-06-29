@@ -19,6 +19,10 @@ const config: Config = {
         opac: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        motion: {
+          '0%,100%': {transform: 'translateX(0%)',},
+          '50%': {transform: 'translateX(-50%)'},
         }
       },
       screens: {

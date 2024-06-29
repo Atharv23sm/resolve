@@ -3,10 +3,10 @@ import { useUserStore } from '@/store/user';
 import { useEffect, useState } from 'react';
 import { baseUrl } from '@/utils/baseUrl';
 import { topicsArray } from '@/utils/topicsArray'
+import { GoTriangleDown, GoTriangleUp } from 'react-icons/go';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import Questions from '../components/Questions';
-import { GoTriangleDown, GoTriangleUp } from 'react-icons/go';
 
 export default function Home() {
 
@@ -14,7 +14,7 @@ export default function Home() {
   const [allQuestions, setAllQuestions] = useState([])
   const [topic, setTopic] = useState([] as string[])
   const [customTopic, setCustomTopic] = useState("")
-  const [showTopics, setShowTopics] = useState(8)
+  const [showTopics, setShowTopics] = useState(4)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
@@ -61,24 +61,24 @@ export default function Home() {
   useEffect(() => {
     getUser()
     getAllQuestions()
-  },[])
+  }, [])
 
   return (
     <section className='relative min-h-screen bg-[#111]'>
       <Sidebar />
       <main className='md:ml-[25vw] lg:ml-[20vw]'>
-        <div className='w-full flex flex-col gap-4 pt-10 p-4'>
+        <div className='w-full flex flex-col gap-4 pt-10 md:pt-4 p-4'>
           <textarea rows={2} placeholder='ask or share'
             className='bg-black border p-2 w-full placeholder:text-sm'
             onChange={(e: any) => setQuestion(e.target.value)} />
-          <div className='flex gap-2 sm:gap-4 lg:gap-8'>
+          <div className='flex gap-8'>
             <div className="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 relative overflow-hidden">
-              <label className='col-span-2 sm:col-span-3 md:col-span-4 pb-2 flex justify-between items-center'>select topics
+              <label className='col-span-2 sm:col-span-3 md:col-span-4 pb-2 flex justify-between items-center'>Select topics
                 {showTopics < topicsArray.length ?
                   <div className='text-xs flex items-center' onClick={() => setShowTopics(showTopics + 8)}>
                     more<GoTriangleDown className='text-lg' />
                   </div> :
-                  <div className='text-xs flex items-center' onClick={() => setShowTopics(8)}>
+                  <div className='text-xs flex items-center' onClick={() => setShowTopics(4)}>
                     less<GoTriangleUp className='text-lg' />
                   </div>}
               </label>
@@ -98,6 +98,7 @@ export default function Home() {
               onClick={handleClick}>Add</button>
           </div>
         </div>
+        <div className='p-4 border-t-4 border-[#fff8] font-bold'>Latest</div>
         <Questions questions={allQuestions} loading={loading} error={error} />
       </main>
     </section>

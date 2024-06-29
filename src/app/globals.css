@@ -30,6 +30,17 @@
     transition-duration: 200ms;
 }
 
+.index-title{
+width: 100%;
+padding: 0 6vw;
+font-weight:800;
+text-align: center;
+line-height:90%;
+letter-spacing: -0.025rem;
+mix-blend-mode: lighten;
+transition-duration: 1s;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }
