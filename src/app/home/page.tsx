@@ -61,9 +61,7 @@ export default function Home() {
   useEffect(() => {
     getUser()
     getAllQuestions()
-  }, [getUser,getAllQuestions])
-
-  console.log(topic)
+  }, [getAllQuestions])
 
   return (
     <section className='relative min-h-screen bg-[#111]'>
