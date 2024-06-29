@@ -67,7 +67,7 @@ export default function Question({ params, }: { params: { questionId: any } }) {
         getQuestion(params.questionId)
         getUser()
         getAllAnswers(params.questionId)
-    }, [])
+    }, [getQuestion, getUser, getAllAnswers, params.questionId])
 
     const allAnsLen = allAnswers.length
 

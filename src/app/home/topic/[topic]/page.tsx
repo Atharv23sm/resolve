@@ -26,7 +26,7 @@ export default function Topic({ params, }: { params: { topic: string } }) {
 
   useEffect(() => {
     getFilteredQuestions()
-  }, [])
+  }, [getFilteredQuestions])
 
   return (
     <div className='md:ml-[25vw] lg:ml-[20vw]'>

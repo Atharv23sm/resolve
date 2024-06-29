@@ -26,7 +26,7 @@ export default function Questions({ questions, loading, error }: any) {
                                     <div className='text-lg font-bold whitespace-pre-line'>{q?.question}</div>
                                     <div className="text-xs text-[#fff8] flex flex-wrap gap-1">
                                         {q?.topic.map((t:string)=>
-                                        {return <div>{t}</div>})}
+                                        {return <div key={t}>{t}</div>})}
                                     </div>
                                 </div>
                             )

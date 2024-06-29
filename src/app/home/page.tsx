@@ -61,7 +61,7 @@ export default function Home() {
   useEffect(() => {
     getUser()
     getAllQuestions()
-  }, [])
+  }, [getUser,getAllQuestions])
 
   console.log(topic)
 
