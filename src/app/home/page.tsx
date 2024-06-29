@@ -61,7 +61,7 @@ export default function Home() {
   useEffect(() => {
     getUser()
     getAllQuestions()
-  },[])xhnage
+  },[])
 
   return (
     <section className='relative min-h-screen bg-[#111]'>
