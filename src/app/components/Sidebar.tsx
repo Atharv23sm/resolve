@@ -18,8 +18,8 @@ export default function Sidebar() {
                 <div className='text-lg font-extrabold leading-none'>Topics</div>
                 <div className="space-y-2 flex flex-wrap py-4">
                     <div className="w-full flex gap-4 items-center">
-                        <input type="search" placeholder="search" className="w-full p-2 border outline-none bg-[#222]" onChange={(e:any)=>setSearch(e.target.value)}/>
-                        <GrSearch size={24} className="cursor-pointer" onClick={() => router.push(`/home/topic/${search}`)}/>
+                        <input type="search" placeholder="search topic" className="w-full p-2 border outline-none bg-[#222]" onChange={(e:any)=>setSearch(e.target.value)}/>
+                        <GrSearch size={24} className="cursor-pointer" onClick={() =>{search!="" && router.push(`/home/topic/${search}`)}}/>
                     </div>
                     {search.length>0 && <div>Search for &quot;{search}&quot;</div>}
                     {topicsArray.filter(i => i.toLowerCase().indexOf(search.toLowerCase())==0).map(

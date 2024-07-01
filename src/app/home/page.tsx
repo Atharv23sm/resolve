@@ -33,7 +33,7 @@ export default function Home() {
 
   async function getAllQuestions() {
     setLoading(true)
-    const res = await axios.post(`${baseUrl}questions/getquestions`)
+    const res = await axios.get(`${baseUrl}questions/getquestions`)
     setLoading(false)
     if (res.data.message == "Questions found") {
       setAllQuestions(res.data.data)

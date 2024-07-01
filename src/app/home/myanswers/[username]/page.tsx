@@ -32,7 +32,7 @@ export default function Question({ params, }: { params: { username: any } }) {
   }, [])
 
   return (
-    <div className={`md:ml-[25vw] lg:ml-[20vw] ${loading && 'pt-10'}`}>
+    <div className={`md:ml-[25vw] lg:ml-[20vw]`}>
       <div className={`pt-10 md:pt-4 p-4 border-b`}>My Answers</div>
       {error && <Error error={error} />}
       {!loading ?
