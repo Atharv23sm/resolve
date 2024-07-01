@@ -29,7 +29,7 @@ export default function Topic({ params, }: { params: { topic: string } }) {
   }, [])
 
   return (
-    <div className='md:ml-[25vw] lg:ml-[20vw]'>
+    <div className='md:ml-[25vw] lg:ml-[20vw] pt-10 md:p-0'>
       <Questions questions={filteredQuestions} loading={loading} error={error} />
     </div>
   )

@@ -71,8 +71,8 @@ export default function Home() {
           <textarea rows={2} placeholder='ask or share'
             className='bg-black border p-2 w-full placeholder:text-sm'
             onChange={(e: any) => setQuestion(e.target.value)} />
-          <div className='flex gap-8'>
-            <div className="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 relative overflow-hidden">
+          <div className='flex justify-between md:justify-start gap-8'>
+            <div className="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 relative overflow-hidden">
               <label className='col-span-2 sm:col-span-3 md:col-span-4 pb-2 flex justify-between items-center'>Select topics
                 {showTopics < topicsArray.length ?
                   <div className='text-xs flex items-center' onClick={() => setShowTopics(showTopics + 8)}>
@@ -84,12 +84,12 @@ export default function Home() {
               </label>
               {topicsArray.slice(0, showTopics).map(
                 (i) => {
-                  return <div className={`px-[2vw] py-2 border text-center overflow-x-hidden break-words ${topic.indexOf(i) > -1 ? 'bg-[#53f]' : 'bg-transparent'}`}
+                  return <div className={`py-2 border text-center overflow-x-hidden break-words ${topic.indexOf(i) > -1 ? 'bg-[#53f]' : 'bg-transparent'}`}
                     key={i} onClick={() => handleTopicClick(i)}>{i}</div>
                 }
               )}
               <div className='col-span-2 sm:col-span-3 md:col-span-4'>
-                <input type="text" placeholder={topic.length > 0 ? 'You can add more related tags here.' : 'Looking for something else? type here.'} className='w-full p-2 border outline-none bg-transparent placeholder:text-[#fff8]'
+                <input type="text" placeholder={topic.length > 0 ? 'You can add more related tags here.' : 'Looking for something else? type here.'} className='w-full p-2 border outline-none bg-transparent placeholder:text-[#fff8] placeholder:text-[0.6rem] md:placeholder:text-sm'
                   onChange={(e: any) => setCustomTopic(e.target.value)} />
               </div>
             </div>
