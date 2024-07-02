@@ -32,9 +32,9 @@ export default function Profile({profileVisible, setProfileVisible}:any) {
   }
 
   return (
-    <div className={`${profileVisible && 'opacity-100'} opacity-0 absolute z-10 xs:w-full sm:w-[16rem] right-0 top-[84px] bg-black border-y-4 sm:border-l-4 border-[#fff8] duration-300`}
+    <div className={`${profileVisible && 'opacity-100'} opacity-0 absolute z-10 xs:w-full sm:w-[16rem] right-0 top-[84px] border border-[#fff4] bg-black duration-600`}
     onMouseLeave={()=>setProfileVisible(false)}>
-      <div className=' p-4 space-y-4 text-center w-full border-b border-[#fff8]'>
+      <div className=' p-4 space-y-4 text-center w-full border-b border-[#fff4]'>
         {user?.username ? <>
           <div className='font-bold text-2xl'>{user?.username}</div>
           <div className='text-[#fffa] text-sm'>{user?.email}</div>
@@ -42,13 +42,13 @@ export default function Profile({profileVisible, setProfileVisible}:any) {
           : <ButtonLoading />}
       </div>
 
-      <div className=' p-4 flex flex-col gap-4 w-full border-b border-[#fff8]'>
-        <Link href={`/home/myquestions/${user?.username}`} className='hover:underline'>My Questions</Link>
-        <Link href={`/home/myanswers/${user?.username}`} className='hover:underline'>My Answers</Link>
+      <div className=' p-4 space-y-4 border-b border-[#fff4]'>
+        <div><Link href={`/home/myquestions/${user?.username}`} className='hover:underline'>My Questions</Link></div>
+        <div><Link href={`/home/myanswers/${user?.username}`} className='hover:underline'>My Answers</Link></div>
       </div>
 
-      <div className='p-4 flex items-center gap-2 text-center hover:underline w-full border-b border-[#fff8]'>
-        Logout <GrLogout className='top-10 right-10 cursor-pointer' onClick={() => logout()} />
+      <div className='p-4 flex items-center gap-2 text-center hover:underline w-full border-b border-[#fff4] cursor-pointer'  onClick={() => logout()}>
+        Logout <GrLogout className='top-10 right-10'/>
       </div>
     </div>
   )

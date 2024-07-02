@@ -10,7 +10,7 @@ export default function Navbar() {
     const router = useRouter()
 
     return (
-        <div className="px-8 py-6 flex justify-between items-center border-b-4 border-[#fff8]">
+        <div className="p-[24px_32px] bg-gradient-to-l from-[black_50%] to-[#53f] flex justify-between items-center border-b">
             <div className="w-max p-1 leading-none border-4 text-xl font-bold cursor-pointer" onClick={() => router.push("/home")}>Resolve</div>
             <CgProfile className="cursor-pointer" size={28} onMouseEnter={() => setProfileVisible(true)} onClick={()=>setProfileVisible(!profileVisible)} />
             {profileVisible && <Profile profileVisible={profileVisible} setProfileVisible={setProfileVisible} />}

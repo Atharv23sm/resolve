@@ -17,17 +17,17 @@ function Index() {
             <div className="w-[30vw] h-[30vh] fixed z-0 bottom-[10vw] right-[30vw] rounded-full bg-[#60f] blur-[20vw] md:blur-[16vw] lg:blur-[8vw] animate-[motion_10s_infinite]" />
             <div className="w-[20vw] h-[20vh] fixed z-0 bottom-0 right-[50vw] rounded-full bg-[#70f] blur-[10vw] md:blur-[8vw] lg:blur-[6vw] animate-[motion_8s_infinite]" />
 
-            <nav className="px-[4vw] py-8 flex justify-between items-center">
+            <nav className="p-[2rem_4vw] flex justify-between items-center">
                 <div className="w-max px-2 md:px-3 border-2 md:border-4 text-[1.4rem] md:text-[2rem] font-extrabold">Resolve</div>
                 <div className="space-x-[4vw] flex">
                     <Link href="/signup">
-                        <button className="px-[2vw] py-[0.7vw] border-2 md:border-4 bg-[#42d] hover:bg-[#74f] duration-500 relative overflow-hidden group flex justify-center items-center">
+                        <button className="p-[0.7vw_2vw] border-2 md:border-4 bg-[#42d] hover:bg-[#74f] duration-500 relative overflow-hidden group flex justify-center items-center">
                             <div className="absolute w-full h-full bg-[#caf] blur-lg -translate-x-[9rem] group-hover:translate-x-[9rem] duration-700" />
                             Join us
                         </button>
                     </Link>
                     <Link href="/login">
-                        <button className="px-[2vw] py-[0.7vw] border-2 md:border-4 hover:bg-[#42d] duration-500 border-[#fff5]">
+                        <button className="p-[0.7vw_2vw] border-2 md:border-4 hover:bg-[#42d] duration-500 border-[#fff5]">
                             Sign in
                         </button>
                     </Link>

@@ -9,13 +9,13 @@ export default function Questions({ questions, loading, error }: any) {
     return (
         <>
             {error && <Error error={error} />}
-            <div className={`${!loading ? 'p-0' : 'p-20'} border-t-2 border-[#fff4]`}>
+            <div className={`${!loading ? 'p-0' : 'p-20'} border-t-2 border-[#fff1]`}>
                 {!loading ?
                     questions.length < 1 ?
                         <div className='text-center pt-10 md:pt-4 p-4'>No results.</div> :
                         questions.map((q: any) => {
                             return (
-                                <div key={q?._id} className='p-4 space-y-4 border-b-2 border-[#fff4] cursor-pointer'
+                                <div key={q?._id} className='p-[32px_16px] space-y-4 border-b-2 border-[#fff1] cursor-pointer'
                                     onClick={() => router.push(`/home/question/${q?._id}`)}>
                                     <div className='text-xs flex justify-between'>
                                         <div>{q?.username}

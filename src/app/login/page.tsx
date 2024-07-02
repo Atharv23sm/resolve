@@ -44,7 +44,7 @@ export default function LoginPage() {
   }, [loginData])
 
   return (
-    <div className="min-h-screen bg-black flex justify-center md:items-center py-[20vh] px-[6vw]">
+    <div className="min-h-screen bg-black flex justify-center md:items-center p-[20vh_6vw]">
       <div className="h-max flex flex-col md:flex-row justify-center md:items-center gap-[6vw] md:gap-[8vw] lg:border-8 lg:p-10">
         <div className="text-[3rem] md:text-[4rem] leading-[3rem] md:leading-[4rem] font-extrabold bg-gradient-to-r from-white to-[#98f] bg-clip-text text-transparent">
           <div>WELCOME.</div>

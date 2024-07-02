@@ -10,7 +10,9 @@ export default function Footer() {
             <Link href={'https://github.com/atharv23sm'}><FaGithub size={28} className="hover:bg-[#116] duration-500 rounded-md p-1"/></Link>
             <Link href={''}><FaLinkedin size={28} className="hover:bg-[#33f] duration-500 rounded-md p-1"/></Link>
         </div>
-        <div className="text-xs text-[#fff6]">Built by Atharv Mahabal</div>
+        <div className="text-xs text-[#fff6]">
+        App in beta version. Stay tuned for updates!<br/>
+        Built by Atharv Mahabal</div>
     </div>
   )
 }

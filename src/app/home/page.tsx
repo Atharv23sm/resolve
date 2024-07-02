@@ -67,9 +67,9 @@ export default function Home() {
     <section className='relative min-h-screen bg-[#111]'>
       <Sidebar />
       <main className='md:ml-[25vw] lg:ml-[20vw]'>
-        <div className='w-full flex flex-col gap-4 pt-10 md:pt-4 p-4'>
+        <div className='w-full flex flex-col gap-4 pt-10 md:pt-4 p-4 bg-[#333]'>
           <textarea rows={2} placeholder='ask or share'
-            className='bg-black border p-2 w-full placeholder:text-sm'
+            className='bg-black p-2 w-full placeholder:text-sm'
             onChange={(e: any) => setQuestion(e.target.value)} />
           <div className='flex justify-between md:justify-start gap-8'>
             <div className="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 relative overflow-hidden">
@@ -84,12 +84,12 @@ export default function Home() {
               </label>
               {topicsArray.slice(0, showTopics).map(
                 (i) => {
-                  return <div className={`py-2 border text-center overflow-x-hidden break-words ${topic.indexOf(i) > -1 ? 'bg-[#53f]' : 'bg-transparent'}`}
+                  return <div className={`py-2 border border-[#fff4] text-center overflow-x-hidden break-words ${topic.indexOf(i) > -1 ? 'bg-[#53f]' : 'bg-transparent'}`}
                     key={i} onClick={() => handleTopicClick(i)}>{i}</div>
                 }
               )}
               <div className='col-span-2 sm:col-span-3 md:col-span-4'>
-                <input type="text" placeholder={topic.length > 0 ? 'You can add more related tags here.' : 'Looking for something else? type here.'} className='w-full p-2 border outline-none bg-transparent placeholder:text-[#fff8] placeholder:text-[0.6rem] md:placeholder:text-sm'
+                <input type="text" placeholder={topic.length > 0 ? 'You can add more related tags here.' : 'Looking for something else? type here.'} className='w-full p-2 border border-[#fff4] outline-none bg-transparent placeholder:text-[#fff8] placeholder:text-[0.6rem] md:placeholder:text-sm'
                   onChange={(e: any) => setCustomTopic(e.target.value)} />
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function Home() {
               onClick={handleClick}>Add</button>
           </div>
         </div>
-        <div className='p-4 border-t-4 border-[#fff8] font-bold'>Latest</div>
+        <div className='p-4 font-bold'>Latest</div>
         <Questions questions={allQuestions} loading={loading} error={error} />
       </main>
     </section>

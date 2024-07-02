@@ -75,10 +75,10 @@ export default function Question({ params, }: { params: { questionId: any } }) {
         <div className={`md:ml-[25vw] lg:ml-[20vw] ${loading && 'pt-10'}`}>
             {error && <Error error={error} />}
             {!loading ? <>
-                <div className={`pt-10 md:pt-4 p-4 space-y-4`}>
+                <div className={`p-[48px_16px] md:py-8 space-y-4`}>
                     <div className='text-xs flex justify-between'>
                         <div>{question?.username}
-                            <span className='text-[#fffa]'> is asking,</span>
+                            <span className='text-[#fff8]'> is asking,</span>
                         </div>
                         <div>{new Date(question?.date).toLocaleDateString() + " - " + new Date(question?.date).toLocaleTimeString()}</div>
                     </div>
@@ -88,7 +88,7 @@ export default function Question({ params, }: { params: { questionId: any } }) {
                     </div>
                 </div>
 
-                <div className='flex gap-4 p-4 border-y border-[#fff8]'>
+                <div className='flex gap-4 p-4 border-y border-[#fff2]'>
                     <textarea rows={4} placeholder='share you answer' className='bg-black border p-2 w-[100%] placeholder:text-sm'
                         onChange={(e: any) => setAnswer(e.target.value)} />
                     <button className='addButton hover:bg-[#75f]'
@@ -105,7 +105,7 @@ export default function Question({ params, }: { params: { questionId: any } }) {
                 <div>
                     {allAnswers.slice(0, showReplies).map((a: any) => {
                         return (
-                            <div key={a?.questionId} className='space-y-4 p-4 border-t border-[#fff8]'>
+                            <div key={a?._id} className='space-y-4 p-[32px_16px] border-t border-[#fff2]'>
                                 <div className='text-xs flex justify-between'>
                                     <div>{a?.username}
                                         <span className='text-[#fff8]'> answered,</span>
