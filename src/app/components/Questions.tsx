@@ -1,15 +1,16 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { baseUrl } from "@/utils/baseUrl";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import ButtonLoading from "./Loaders/ButtonLoading";
 import Error from "./Errors/Error";
 import axios from "axios";
-import { useMyQueContext } from "../home/myquestions/[username]/page";
+import { MyQueContext } from "@/helpers/useMyQueContext";
 
 export default function Questions({ questions, loading, error }: any) {
-  const { getMyQuestions, isMyQue, setLoading, setError } = useMyQueContext();
+  const { getMyQuestions, isMyQue, setLoading, setError } =
+    useContext(MyQueContext);
   const [showMore, setShowMore] = useState(0);
   const router = useRouter();
 

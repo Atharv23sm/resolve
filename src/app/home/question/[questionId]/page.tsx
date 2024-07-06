@@ -84,7 +84,7 @@ export default function Question({ params }: { params: { questionId: any } }) {
 
     pusherClient.subscribe("AnsChannel");
 
-    pusherClient.bind("onAnswerAdd", (allAnswers: any) => {
+    pusherClient.bind("onAnswerChange", (allAnswers: any) => {
       setAllAnswers(allAnswers);
     });
 

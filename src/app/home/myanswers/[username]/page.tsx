@@ -28,10 +28,10 @@ export default function Question({ params }: { params: { username: any } }) {
     }
   }
 
-  const deleteAnswer = async (aid: string) => {
+  const deleteAnswer = async (aid: string, questionId: string) => {
     setLoading(true);
     const response = await axios.post(`${baseUrl}questions/deleteanswer`, {
-      aid,
+      aid, questionId
     });
     if (response.data.message == "Answer deleted") {
       getMyAnswers();
@@ -92,7 +92,7 @@ export default function Question({ params }: { params: { username: any } }) {
                   </div>
                   <div
                     className="p-[8px_16px] hover:bg-[#f00] duration-300 text-[#f00] hover:text-white"
-                    onClick={() => deleteAnswer(a._id)}
+                    onClick={() => deleteAnswer(a._id, a.questionId)}
                   >
                     Delete
                   </div>

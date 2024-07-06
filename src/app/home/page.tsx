@@ -68,7 +68,7 @@ export default function Home() {
 
     pusherClient.subscribe("QueChannel");
 
-    pusherClient.bind("onQuestionAdd", (allQuestions: any) => {
+    pusherClient.bind("onQuestionChange", (allQuestions: any) => {
       setAllQuestions(allQuestions);
     });
 

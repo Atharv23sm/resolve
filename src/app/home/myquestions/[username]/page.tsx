@@ -1,10 +1,9 @@
 "use client";
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState } from "react";
 import { baseUrl } from "@/utils/baseUrl";
 import axios from "axios";
 import Questions from "@/app/components/Questions";
-
-const MyQueContext = createContext<any>({});
+import { MyQueContext } from "@/helpers/useMyQueContext";
 
 export default function Topic({ params }: { params: { username: string } }) {
   const [myQuestions, setMyQuestions] = useState([]);
@@ -41,5 +40,3 @@ export default function Topic({ params }: { params: { username: string } }) {
     </div>
   );
 }
-
-export const useMyQueContext = () => useContext(MyQueContext);
