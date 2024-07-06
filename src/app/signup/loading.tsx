@@ -1,7 +1,7 @@
-import PageLoading from "../components/Loaders/PageLoading"
+import PageLoading from "../components/Loaders/PageLoading";
 
 function Loading() {
-  return <PageLoading/>
+  return <PageLoading />;
 }
 
-export default Loading
+export default Loading;

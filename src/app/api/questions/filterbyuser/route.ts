@@ -4,15 +4,15 @@ import Question from "@/models/questionModel";
 
 connect();
 
-export async function POST(request:NextRequest){
-    try {
-        const reqBody = await request.json()
+export async function POST(req: NextRequest) {
+  try {
+    const reqBody = await req.json();
 
-        const myQuestions = await Question.find({username:reqBody.username}).sort({date:-1})
-        return NextResponse.json({ message: "My questions found", data: myQuestions })
-    }
-    catch (err:any) {
-        return NextResponse.json({error: err.message});
-    }
-
+    const myQuestions = await Question.find({
+      username: reqBody.username,
+    }).sort({ date: -1 });
+    return NextResponse.json({ message: "My questions found", myQuestions });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message });
+  }
 }

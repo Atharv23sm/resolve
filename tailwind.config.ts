@@ -11,26 +11,26 @@ const config: Config = {
     extend: {
       keyframes: {
         index: {
-          '0%': { transform: 'translateX(-100%)' },
-          '58%': { transform: 'translateX(100%)', opacity: '0' },
-          '59%': { transform: 'translateX(-100%)', opacity: '0' },
-          '100%': { transform: 'translateX(-100%)', opacity: '1' }
+          "0%": { transform: "translateX(-100%)" },
+          "58%": { transform: "translateX(100%)", opacity: "0" },
+          "59%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(-100%)", opacity: "1" },
         },
         opac: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
         motion: {
-          '0%,100%': {transform: 'translateX(0%)',},
-          '50%': {transform: 'translateX(-50%)'},
-        }
+          "0%,100%": { transform: "translateX(0%)" },
+          "50%": { transform: "translateX(-50%)" },
+        },
       },
       screens: {
-        'xs': '240px',
-        'sm': '480px',
-        'md': '720px',
-        'lg': '1000px',
-        'xl': '1200px',
+        xs: "240px",
+        sm: "480px",
+        md: "720px",
+        lg: "1000px",
+        xl: "1200px",
       },
     },
   },

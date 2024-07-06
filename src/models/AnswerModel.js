@@ -1,30 +1,38 @@
 import mongoose from "mongoose";
 
 const answerSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: [true, "Username needed"],
+  },
 
-    username: {
-        type: String,
-        required: [true, "Username needed"]
-    },
+  questionId: {
+    type: String,
+  },
 
-    questionId: {
-        type: String,
-    },
+  question: {
+    type: String,
+  },
 
-    question: {
-        type: String
-    },
+  answer: {
+    type: String,
+    required: [true, "Please provide answer"],
+  },
 
-    answer: {
-        type: String,
-        required: [true, "Please provide answer"],
-    },
+  date: {
+    type: Date,
+  },
 
-    date: {
-        type: Date
-    }
-})
+  upvotes: {
+    type: Number,
+  },
 
-const Answer = mongoose.models.answers || mongoose.model("answers", answerSchema)
+  downvotes: {
+    type: Number,
+  },
+});
 
-export default Answer
+const Answer =
+  mongoose.models.answers || mongoose.model("answers", answerSchema);
+
+export default Answer;

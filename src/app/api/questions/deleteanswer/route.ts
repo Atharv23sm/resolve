@@ -1,23 +1,18 @@
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
-import Question from "@/models/questionModel";
+import Answer from "@/models/AnswerModel";
 
 connect();
 
 export async function POST(req: NextRequest) {
   try {
     const reqBody = await req.json();
-    const { username, question, topic } = reqBody;
 
-    const newQuestion = new Question({
-      username,
-      question,
-      topic,
-      date: Date.now(),
-    });
-    await newQuestion.save();
+    const a = await Answer.findByIdAndDelete(reqBody.aid);
 
-    return NextResponse.json({ success: true });
+    if (a)
+      return NextResponse.json({ message: "Answer deleted", success: true });
+    else throw new Error();
   } catch (err: any) {
     return NextResponse.json({ error: "Something went wrong." });
   }

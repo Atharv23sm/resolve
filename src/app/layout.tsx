@@ -7,14 +7,14 @@ export const metadata: Metadata = {
   description: "Powered by Next.js",
 };
 
-export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html>
-      <body className="bg-[#000] text-white font-[figtree]">
-        <main className="w-full min-h-screen">
-        {children}
-        </main>
-        <Footer/>
+      <body className="bg-black text-white font-[figtree]">
+        <main className="w-full min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );
