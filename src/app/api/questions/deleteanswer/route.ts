@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
       date: -1,
     });
 
-    pusherServer.trigger("AnsChannel", "onAnswerChange", allAnswers);
+    await pusherServer.trigger("AnsChannel", "onAnswerChange", allAnswers);
 
     if (a)
       return NextResponse.json({ message: "Answer deleted", success: true });

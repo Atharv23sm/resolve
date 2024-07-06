@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     if (q && a) {
       const allQuestions = await Question.find().sort({ date: -1 });
-      pusherServer.trigger("QueChannel", "onQuestionChange", allQuestions);
+      await pusherServer.trigger("QueChannel", "onQuestionChange", allQuestions);
       return NextResponse.json({ message: "Question deleted", success: true });
     } else throw new Error();
   } catch (err: any) {

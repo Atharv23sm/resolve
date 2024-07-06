@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     await newQuestion.save();
 
     const allQuestions = await Question.find().sort({ date: -1 });
-    pusherServer.trigger("QueChannel", "onQuestionChange", allQuestions);
+    await pusherServer.trigger("QueChannel", "onQuestionChange", allQuestions);
 
     return NextResponse.json({ success: true });
   } catch (err: any) {

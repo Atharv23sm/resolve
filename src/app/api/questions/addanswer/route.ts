@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       date: -1,
     });
 
-    pusherServer.trigger("AnsChannel", "onAnswerChange", allAnswers);
+    await pusherServer.trigger("AnsChannel", "onAnswerChange", allAnswers);
 
     return NextResponse.json({ success: true });
   } catch (err: any) {
