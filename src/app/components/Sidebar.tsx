@@ -26,7 +26,7 @@ export default function Sidebar() {
             <input
               type="search"
               placeholder="search topic"
-              className="w-full p-2 outline-none bg-[#222] placeholder:text-sm"
+              className="w-full p-2 outline-none bg-2 placeholder:text-sm"
               onChange={(e: any) => setSearch(e.target.value)}
             />
             <GrSearch
@@ -43,7 +43,7 @@ export default function Sidebar() {
             .map((t) => {
               return (
                 <div
-                  className="w-full p-1 md:p-2 hover:bg-[#53f] duration-700 cursor-pointer"
+                  className="w-full p-1 md:p-2 hover:bg-5 duration-700 cursor-pointer"
                   key={t}
                   onClick={() => {
                     router.push(`/home/topic/${t}`);

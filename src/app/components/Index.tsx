@@ -37,7 +37,7 @@ function Index() {
       <main className="space-y-32 py-[20vw] md:py-[8vw]">
         <div className="space-y-20 md:space-y-32 text-center">
           <div className="font-bold text-[10vw] md:text-[7vw] animate-[opac_3s] tracking-tight leading-none mix-blend-lighten">
-            <span className="text-[#fff8]">Welcome to </span>Resolve
+            <span className="text-f8">Welcome to </span>Resolve
           </div>
           <div className="animate-[opac_6s] md:text-xl lg:text-2xl px-[5vw] md:px-[16vw] mix-blend-lighten">
             Your go-to platform for insightful discussions on a wide range of
@@ -55,7 +55,7 @@ function Index() {
             scrollAmt > 300 && "md:opacity-[1]"
           }`}
         >
-          Unlock <span className="text-[#fff8]">your quest for answers</span>
+          Unlock <span className="text-f8">your quest for answers</span>
         </div>
         <hr />
         <div
@@ -63,8 +63,8 @@ function Index() {
             scrollAmt > 650 && "md:opacity-[1]"
           }`}
         >
-          <span className="text-[#fff8]">From </span>Users,
-          <span className="text-[#fff8]">To </span>Users.
+          <span className="text-f8">From </span>Users,
+          <span className="text-f8">To </span>Users.
         </div>
         <hr />
         <div
@@ -72,7 +72,7 @@ function Index() {
             scrollAmt > 1100 && "md:opacity-[1]"
           }`}
         >
-          <span className="text-[#fff8]">Ask </span>anything.
+          <span className="text-f8">Ask </span>anything.
         </div>
         <div
           className={`mx-[4vw] border-2 md:border-4 lg:border-8 grid grid-cols-4 relative overflow-hidden break-words md:opacity-10 duration-[2s] mix-blend-lighten ${

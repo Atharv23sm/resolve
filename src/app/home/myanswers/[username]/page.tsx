@@ -48,17 +48,17 @@ export default function Question({ params }: { params: { username: any } }) {
 
   return (
     <div className={`md:ml-[25vw] lg:ml-[20vw]`}>
-      <div className={`pt-10 md:pt-4 p-4 border-b border-[#fff2]`}>
+      <div className={`pt-10 md:pt-4 p-4 border-b border-f2`}>
         My Answers
       </div>
       {error && <Error error={error} />}
       {!loading ? (
-        <div className="border-b border-[#fff2]">
+        <div className="border-b border-f2">
           {myAnswers.map((a: any) => {
             return (
               <div
                 key={a?._id}
-                className="p-[32px_16px] space-y-4 border-t border-[#fff2] relative overflow-hidden hover:bg-[#0e0e0e]"
+                className="p-[32px_16px] space-y-4 border-t border-f2 relative overflow-hidden hover:bg-[#0e0e0e]"
               >
                 <div className="text-xs flex justify-between">
                   <div>Answering to,</div>
@@ -83,7 +83,7 @@ export default function Question({ params }: { params: { username: any } }) {
                   onMouseLeave={() => setShowMore(0)}
                 >
                   <div
-                    className="p-[8px_16px] hover:bg-[#222] duration-300"
+                    className="p-[8px_16px] hover:bg-2 duration-300"
                     onClick={() =>
                       router.push(`/home/question/${a?.questionId}`)
                     }

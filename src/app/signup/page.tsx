@@ -113,8 +113,8 @@ export default function SignupPage() {
               type="submit"
               disabled={buttonDisabled}
               className={`w-[250px] p-2 ${
-                !loading && "bg-[#53f]"
-              } disabled:text-[#fff8]`}
+                !loading && "bg-5"
+              } disabled:text-8`}
             >
               <div>{loading ? <ButtonLoading /> : "Sign up"}</div>
             </button>

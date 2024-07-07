@@ -8,7 +8,7 @@ export default function Layout({
     <section className="select-none">
       <Navbar />
       <main>
-        <section className="relative min-h-screen bg-[#111]">
+        <section className="relative min-h-screen bg-1">
           <Sidebar />
           {children}
         </section>

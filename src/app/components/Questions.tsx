@@ -60,7 +60,7 @@ export default function Questions({ questions, loading, error }: any) {
                   <div className="text-lg font-bold whitespace-pre-line">
                     {q?.question}
                   </div>
-                  <div className="text-xs text-[#fff8] flex flex-wrap gap-1">
+                  <div className="text-xs text-f8 flex flex-wrap gap-1">
                     {q?.topic.map((t: string) => {
                       return <div key={t}>{t}</div>;
                     })}
@@ -80,7 +80,7 @@ export default function Questions({ questions, loading, error }: any) {
                         onMouseLeave={() => setShowMore(0)}
                       >
                         <div
-                          className="p-[8px_16px] hover:bg-[#222] duration-300"
+                          className="p-[8px_16px] hover:bg-2 duration-300"
                           onClick={() =>
                             router.push(`/home/question/${q?._id}`)
                           }

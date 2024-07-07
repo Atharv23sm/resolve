@@ -34,10 +34,10 @@ export default function Profile({ profileVisible, setProfileVisible }: any) {
     <div
       className={`${
         profileVisible && "opacity-100"
-      } opacity-0 absolute z-10 xs:w-full sm:w-[16rem] right-0 top-[68px] border-y md:border border-[#fff4] bg-black duration-600`}
+      } opacity-0 absolute z-10 xs:w-full sm:w-[16rem] right-0 top-[68px] border-y md:border border-f4 bg-black duration-600`}
       onMouseLeave={() => setProfileVisible(false)}
     >
-      <div className=" p-4 space-y-4 text-center w-full border-b border-[#fff4]">
+      <div className=" p-4 space-y-4 text-center w-full border-b border-f4">
         {user?.username ? (
           <>
             <div className="font-bold text-2xl">{user?.username}</div>
@@ -48,7 +48,7 @@ export default function Profile({ profileVisible, setProfileVisible }: any) {
         )}
       </div>
 
-      <div className="p-4 space-y-4 border-b border-[#fff4]">
+      <div className="p-4 space-y-4 border-b border-f4">
         <div>
           <Link
             href={`/home/myquestions/${user?.username}`}
@@ -70,7 +70,7 @@ export default function Profile({ profileVisible, setProfileVisible }: any) {
       </div>
 
       <div
-        className="p-4 flex items-center gap-2 text-center hover:underline w-full border-b border-[#fff4] cursor-pointer"
+        className="p-4 flex items-center gap-2 text-center hover:underline w-full border-b border-f4 cursor-pointer"
         onClick={() => logout()}
       >
         Logout <GrLogout className="top-10 right-10" />

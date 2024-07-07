@@ -1,14 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
-import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { baseUrl } from "@/utils/baseUrl";
 import { useUserStore } from "@/store/user";
-import ButtonLoading from "@/app/components/Loaders/ButtonLoading";
-import Error from "@/app/components/Errors/Error";
-import axios from "axios";
+import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { MdQuestionAnswer } from "react-icons/md";
 import { pusherClient } from "@/app/lib/pusher";
-import { BiDownvote, BiUpvote } from "react-icons/bi";
+import { CldUploadWidget } from "next-cloudinary";
+import { GrAttachment } from "react-icons/gr";
+// import { BiDownvote, BiUpvote } from "react-icons/bi";
+import axios from "axios";
+import ButtonLoading from "@/app/components/Loaders/ButtonLoading";
+import Error from "@/app/components/Errors/Error";
+import Attachments from "@/app/components/Attachments";
+import AddButton from "@/app/components/AddButton";
 
 export default function Question({ params }: { params: { questionId: any } }) {
   const [answer, setAnswer] = useState("");
@@ -19,9 +23,11 @@ export default function Question({ params }: { params: { questionId: any } }) {
     question: "",
     topic: [],
     date: "",
+    imagePublicIds: [],
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  let [imagePublicIds, setImagePublicIds] = useState([] as string[]);
 
   const { user, getUser } = useUserStore((state: any) => ({
     user: state.user,
@@ -41,7 +47,6 @@ export default function Question({ params }: { params: { questionId: any } }) {
   }
 
   async function getAllAnswers(qId: any) {
-    setLoading(true);
     const res = await axios.post(`${baseUrl}questions/getanswers`, { qId });
     setLoading(false);
     if (res.data.message == "Answers found") {
@@ -53,12 +58,12 @@ export default function Question({ params }: { params: { questionId: any } }) {
   }
 
   const addAnswer = async () => {
-    setLoading(true);
     const response = await axios.post(`${baseUrl}questions/addanswer`, {
       username: user.username,
       questionId: params.questionId,
       question: question.question,
       answer,
+      imagePublicIds,
     });
     setLoading(false);
     if (!response.data.success) {
@@ -70,6 +75,8 @@ export default function Question({ params }: { params: { questionId: any } }) {
   const handleClick = async () => {
     setLoading(true);
     await addAnswer();
+    setAnswer("");
+    setImagePublicIds([]);
     getAllAnswers(params.questionId);
   };
 
@@ -78,8 +85,8 @@ export default function Question({ params }: { params: { questionId: any } }) {
   // };
 
   useEffect(() => {
-    getQuestion(params.questionId);
     getUser();
+    getQuestion(params.questionId);
     getAllAnswers(params.questionId);
 
     pusherClient.subscribe("AnsChannel");
@@ -100,11 +107,11 @@ export default function Question({ params }: { params: { questionId: any } }) {
       {error && <Error error={error} />}
       {!loading ? (
         <>
-          <div className={`p-[48px_16px_32px] md:py-8 space-y-4 bg-[#333]`}>
+          <div className={`p-[48px_16px_32px] md:py-8 space-y-4 bg-3`}>
             <div className="text-xs flex justify-between">
               <div>
                 {question?.username}
-                <span className="text-[#fff8]"> is asking,</span>
+                <span className="text-f8"> is asking,</span>
               </div>
               <div>
                 {new Date(question?.date).toLocaleDateString() +
@@ -115,25 +122,53 @@ export default function Question({ params }: { params: { questionId: any } }) {
             <div className="text-lg font-bold whitespace-pre-line">
               {question?.question}
             </div>
-            <div className="text-xs text-[#fff8] flex flex-wrap gap-1">
+            <Attachments att={question?.imagePublicIds} />
+            <div className="text-xs text-f8 flex flex-wrap gap-1">
               {question?.topic.map((t: string) => {
                 return <div key={t}>{t}</div>;
               })}
             </div>
           </div>
 
-          <div className="flex gap-4 p-4 border-y border-[#fff2] bg-[#222]">
+          <div className="flex gap-4 p-4 border-y border-f2 bg-2">
             <textarea
               rows={4}
               placeholder="share you answer"
               className="bg-black p-2 w-[100%] placeholder:text-sm"
               onChange={(e: any) => setAnswer(e.target.value)}
             />
-            <button className="addButton hover:bg-[#75f]" onClick={handleClick}>
-              Add
-            </button>
+            <div className="flex flex-col gap-8 items-center">
+              <CldUploadWidget
+                uploadPreset="resolve-by-atharv"
+                onSuccess={(results: any) => {
+                  imagePublicIds.push(results.info.public_id);
+                  console.log(imagePublicIds);
+                }}
+              >
+                {({ open }) => {
+                  return (
+                    <button
+                      onClick={() => open()}
+                      className="p-2 rounded-full bg-5 relative"
+                    >
+                      <GrAttachment />
+                      {imagePublicIds.length > 0 && (
+                        <div className="absolute size-5 rounded-full bg-[#f00] top-0 -right-2 text-sm">
+                          {imagePublicIds.length}
+                        </div>
+                      )}
+                    </button>
+                  );
+                }}
+              </CldUploadWidget>
+              <AddButton
+                loading={loading}
+                ip={answer}
+                handleClick={handleClick}
+              />
+            </div>
           </div>
-          <div className="p-4 flex gap-2 items-center text-sm bg-[#222]">
+          <div className="p-4 flex gap-2 items-center text-sm bg-2">
             <MdQuestionAnswer size={20} />
             {(showReplies >= allAnsLen ? allAnsLen : showReplies) +
               " / " +
@@ -157,12 +192,12 @@ export default function Question({ params }: { params: { questionId: any } }) {
               return (
                 <div
                   key={a?._id}
-                  className="space-y-4 p-[32px_16px] border-t border-[#fff2]"
+                  className="space-y-4 p-[32px_16px] border-t border-f2"
                 >
                   <div className="text-xs flex justify-between">
                     <div>
                       {a?.username}
-                      <span className="text-[#fff8]"> answered,</span>
+                      <span className="text-f8"> answered,</span>
                     </div>
                     <div>
                       {new Date(a?.date).toLocaleDateString() +
@@ -171,6 +206,9 @@ export default function Question({ params }: { params: { questionId: any } }) {
                     </div>
                   </div>
                   <div className="whitespace-pre-line italic">{a?.answer}</div>
+
+                  <Attachments att={a?.imagePublicIds} />
+
                   {/* <div className="pt-4 flex gap-6 items-center">
                     <div className="flex gap-1 items-center">
                       <BiUpvote className="cursor-pointer" size={28} onClick={() => vote("up")} />{" "}

@@ -1,14 +1,14 @@
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
-import Answer from "@/models/AnswerModel";
 import { pusherServer } from "@/app/lib/pusher";
+import Answer from "@/models/AnswerModel";
 
 connect();
 
 export async function POST(req: NextRequest) {
   try {
     const reqBody = await req.json();
-    const { username, questionId, question, answer } = reqBody;
+    const { username, questionId, question, answer, imagePublicIds } = reqBody;
 
     const newAnswer = new Answer({
       username,
@@ -16,6 +16,7 @@ export async function POST(req: NextRequest) {
       question,
       answer,
       date: Date.now(),
+      imagePublicIds,
       upvotes: 0,
       downvotes: 0,
     });

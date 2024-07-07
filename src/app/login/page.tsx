@@ -93,12 +93,12 @@ export default function LoginPage() {
             type="submit"
             disabled={buttonDisabled && true}
             className={`w-[250px] p-2 ${
-              !loading && "bg-[#53f] hover:bg-[#75f]"
+              !loading && "bg-5 hover:bg-[#75f]"
             } flex justify-center`}
           >
             <div
               className={`${
-                buttonDisabled && "text-[#fff8]"
+                buttonDisabled && "text-f8"
               } flex justify-center`}
             >
               {loading ? <ButtonLoading /> : "Login"}

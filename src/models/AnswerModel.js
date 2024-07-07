@@ -23,6 +23,10 @@ const answerSchema = new mongoose.Schema({
     type: Date,
   },
 
+  imagePublicIds: {
+    type: Array,
+  },
+
   upvotes: {
     type: Number,
   },

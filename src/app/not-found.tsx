@@ -13,7 +13,7 @@ export default function NotFound() {
         className="invert"
       />
       <p>Apologies, could not locate the page.</p>
-      <Link href="/" className="p-1 rounded-md bg-[#53f]">
+      <Link href="/" className="p-1 rounded-md bg-5">
         <GrHome size={32} />
       </Link>
     </div>

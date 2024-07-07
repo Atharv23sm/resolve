@@ -18,6 +18,10 @@ const questionSchema = new mongoose.Schema({
   date: {
     type: Date,
   },
+
+  imagePublicIds: {
+    type: Array,
+  },
 });
 
 const Question =
