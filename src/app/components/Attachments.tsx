@@ -13,7 +13,7 @@ function Attachments({ att }: any) {
               height={0}
               sizes="100vw"
               loading="lazy"
-              className="w-full sm:size-[44vw] md:size-[33vw] lg:size-[24vw] object-cover border-2 border-f4"
+              className="w-full h-[40vw] sm:size-[44vw] md:size-[33vw] lg:size-[24vw] bg-gradient-to-t from-black to-2 object-cover border-2 border-f4 text-center text-sm"
               src={i}
               key={i}
               alt="Oops! Colud not load image."
