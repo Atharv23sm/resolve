@@ -1,16 +1,15 @@
 "use client";
 import { useUserStore } from "@/store/user";
 import { useEffect, useState } from "react";
-import { CldUploadWidget, CldImage } from "next-cloudinary";
 import { baseUrl } from "@/utils/baseUrl";
 import { topicsArray } from "@/utils/topicsArray";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
-import { GrAttachment } from "react-icons/gr";
+import { pusherClient } from "../lib/pusher";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import Questions from "../components/Questions";
-import { pusherClient } from "../lib/pusher";
 import AddButton from "../components/AddButton";
+import UploadWidget from "../components/UploadWidget";
 
 export default function Home() {
   const [question, setQuestion] = useState("");
@@ -18,9 +17,9 @@ export default function Home() {
   const [topic, setTopic] = useState([] as string[]);
   const [customTopic, setCustomTopic] = useState("");
   const [showTopics, setShowTopics] = useState(4);
-  let [imagePublicIds, setImagePublicIds] = useState([] as string[]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  let [imagePublicIds, setImagePublicIds] = useState([] as string[]);
 
   const { user, getUser } = useUserStore((state: any) => ({
     user: state.user,
@@ -149,29 +148,7 @@ export default function Home() {
             </div>
 
             <div className=" flex flex-col gap-8 items-center">
-              <CldUploadWidget
-                uploadPreset="resolve-by-atharv"
-                onSuccess={(results: any) => {
-                  imagePublicIds.push(results.info.public_id);
-                  console.log(imagePublicIds);
-                }}
-              >
-                {({ open }) => {
-                  return (
-                    <button
-                      onClick={() => open()}
-                      className="p-2 rounded-full bg-5 relative"
-                    >
-                      <GrAttachment />
-                      {imagePublicIds.length > 0 && (
-                        <div className="absolute size-5 rounded-full bg-[#f00] top-0 -right-2 text-sm">
-                          {imagePublicIds.length}
-                        </div>
-                      )}
-                    </button>
-                  );
-                }}
-              </CldUploadWidget>
+              <UploadWidget imagePublicIds={imagePublicIds}/>
               <AddButton
                 loading={loading}
                 ip={question}

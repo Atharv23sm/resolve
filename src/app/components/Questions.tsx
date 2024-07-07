@@ -49,7 +49,7 @@ export default function Questions({ questions, loading, error }: any) {
                   <div className="text-xs flex justify-between">
                     <div>
                       {q?.username}
-                      <span className="text-[#fffa]"> is asking,</span>
+                      <span className="text-f8"> is asking,</span>
                     </div>
                     <div>
                       {new Date(q?.date).toLocaleDateString() +

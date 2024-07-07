@@ -39,6 +39,7 @@ const config: Config = {
         5: "#53f",
         f2: "#fff2",
         f4: "#fff4",
+        f8: "#fff8"
       },
     },
   },

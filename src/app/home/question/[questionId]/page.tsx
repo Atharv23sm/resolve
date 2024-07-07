@@ -5,14 +5,13 @@ import { useUserStore } from "@/store/user";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { MdQuestionAnswer } from "react-icons/md";
 import { pusherClient } from "@/app/lib/pusher";
-import { CldUploadWidget } from "next-cloudinary";
-import { GrAttachment } from "react-icons/gr";
 // import { BiDownvote, BiUpvote } from "react-icons/bi";
 import axios from "axios";
 import ButtonLoading from "@/app/components/Loaders/ButtonLoading";
 import Error from "@/app/components/Errors/Error";
 import Attachments from "@/app/components/Attachments";
 import AddButton from "@/app/components/AddButton";
+import UploadWidget from "@/app/components/UploadWidget";
 
 export default function Question({ params }: { params: { questionId: any } }) {
   const [answer, setAnswer] = useState("");
@@ -138,29 +137,7 @@ export default function Question({ params }: { params: { questionId: any } }) {
               onChange={(e: any) => setAnswer(e.target.value)}
             />
             <div className="flex flex-col gap-8 items-center">
-              <CldUploadWidget
-                uploadPreset="resolve-by-atharv"
-                onSuccess={(results: any) => {
-                  imagePublicIds.push(results.info.public_id);
-                  console.log(imagePublicIds);
-                }}
-              >
-                {({ open }) => {
-                  return (
-                    <button
-                      onClick={() => open()}
-                      className="p-2 rounded-full bg-5 relative"
-                    >
-                      <GrAttachment />
-                      {imagePublicIds.length > 0 && (
-                        <div className="absolute size-5 rounded-full bg-[#f00] top-0 -right-2 text-sm">
-                          {imagePublicIds.length}
-                        </div>
-                      )}
-                    </button>
-                  );
-                }}
-              </CldUploadWidget>
+              <UploadWidget imagePublicIds={imagePublicIds}/>
               <AddButton
                 loading={loading}
                 ip={answer}
