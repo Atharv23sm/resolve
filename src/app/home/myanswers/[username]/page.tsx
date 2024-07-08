@@ -68,7 +68,7 @@ export default function Question({ params }: { params: { username: any } }) {
                       new Date(a?.date).toLocaleTimeString()}
                   </div>
                 </div>
-                <div className="font-bold">{a?.question}</div>
+                <div className="font-bold text-sm">{a?.question}</div>
                 <div className="whitespace-pre-line italic">{a?.answer}</div>
                 <div className="absolute right-2 bottom-2">
                   <BsThreeDotsVertical
