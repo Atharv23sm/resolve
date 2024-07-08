@@ -136,12 +136,8 @@ export default function Question({ params }: { params: { questionId: any } }) {
               className="bg-black p-2 w-[100%] placeholder:text-sm"
               onChange={(e: any) => setAnswer(e.target.value)}
             />
-<<<<<<< HEAD
-            <div className="flex flex-col gap-4 justify-between items-center">
-=======
-            <div className="flex flex-col gap-8 justify-end items-center">
->>>>>>> b8b191c7f7ede536d437d9b6f2d9c0353582465b
-              <UploadWidget imagePublicIds={imagePublicIds}/>
+            <div className="flex flex-col gap-4 justify-end items-center">
+              <UploadWidget imagePublicIds={imagePublicIds} />
               <AddButton
                 loading={loading}
                 ip={answer}
