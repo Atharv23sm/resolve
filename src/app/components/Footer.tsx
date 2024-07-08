@@ -3,7 +3,7 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div className="p-10 bg-black border-t text-right space-y-4 mix-blend-lighten">
+    <div className="p-10 bg-black text-right space-y-4 mix-blend-lighten border-t border-f8">
       <div>Join the conversation</div>
       <div className="w-full flex items-center justify-end gap-4">
         <Link href={"https://instagram.com/atharv_mahabal"}>

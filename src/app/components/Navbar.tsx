@@ -9,9 +9,9 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <div className="p-[16px_22px] bg-gradient-to-l from-[black_50%] to-5 flex justify-between items-center border-b">
+    <div className="p-[16px_22px] bg-gradient-to-l from-[black_50%] to-5 flex justify-between items-center border-b border-f8">
       <div
-        className="w-max p-1 leading-none border-4 text-xl font-bold cursor-pointer"
+        className="w-max p-1 leading-none border-4 border-white text-xl font-bold cursor-pointer"
         onClick={() => router.push("/home")}
       >
         Resolve

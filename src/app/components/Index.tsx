@@ -16,18 +16,18 @@ function Index() {
       <div className="w-[20vw] h-[20vh] fixed z-0 bottom-[20vw] right-[50vw] rounded-full bg-[#70f] blur-[20vw] md:blur-[16vw] lg:blur-[8vw] animate-[motion_10s_infinite]" />
 
       <nav className="p-[2rem_4vw] flex justify-between items-center">
-        <div className="w-max px-2 md:px-3 border-2 md:border-4 text-[1.4rem] md:text-[2rem] font-extrabold">
+        <div className="w-max px-2 md:px-3 border-2 md:border-4 border-white text-[1.4rem] md:text-[2rem] font-extrabold">
           Resolve
         </div>
         <div className="space-x-[4vw] flex">
           <Link href="/signup">
-            <button className="p-[0.7vw_2vw] border-2 md:border-4 bg-[#42d] hover:bg-[#74f] duration-500 relative overflow-hidden group flex justify-center items-center">
+            <button className="p-[0.7vw_2vw] border-2 md:border-4 border-f8 bg-[#42d] hover:bg-[#74f] duration-500 relative overflow-hidden group flex justify-center items-center">
               <div className="absolute w-full h-full bg-[#caf] blur-lg -translate-x-[9rem] group-hover:translate-x-[9rem] duration-700" />
               Join us
             </button>
           </Link>
           <Link href="/login">
-            <button className="p-[0.7vw_2vw] border-2 md:border-4 hover:bg-[#42d] duration-500 border-[#fff5]">
+            <button className="p-[0.7vw_2vw] border-2 md:border-4 hover:bg-[#42d] duration-500 border-f8">
               Sign in
             </button>
           </Link>
@@ -75,7 +75,7 @@ function Index() {
           <span className="text-f8">Ask </span>anything.
         </div>
         <div
-          className={`mx-[4vw] border-2 md:border-4 lg:border-8 grid grid-cols-4 relative overflow-hidden break-words md:opacity-10 duration-[2s] mix-blend-lighten ${
+          className={`mx-[4vw] border-2 md:border-4 lg:border-8 border-white grid grid-cols-4 relative overflow-hidden break-words md:opacity-10 duration-[2s] mix-blend-lighten ${
             scrollAmt > 1200 && "md:opacity-[1]"
           }`}
         >

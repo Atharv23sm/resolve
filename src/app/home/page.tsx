@@ -147,7 +147,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className=" flex flex-col gap-8 items-center">
+            <div className="flex flex-col gap-14 items-center">
               <UploadWidget imagePublicIds={imagePublicIds}/>
               <AddButton
                 loading={loading}

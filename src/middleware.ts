@@ -10,6 +10,9 @@ export function middleware(req: NextRequest) {
   if (!isPublicPath && !token) {
     return NextResponse.redirect(new URL("/login", req.nextUrl));
   }
+  if ((path === "/login" || path === "/signup") && token) {
+    return NextResponse.redirect(new URL("/home", req.nextUrl));
+  }
 }
 
 export const config = {
