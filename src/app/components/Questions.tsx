@@ -8,10 +8,18 @@ import Error from "./Errors/Error";
 import axios from "axios";
 import { MyQueContext } from "@/helpers/useMyQueContext";
 
-export default function Questions({ questions, loading, error }: any) {
+export default function Questions({
+  questions,
+  loading,
+  error,
+}: {
+  questions: Array<question>;
+  loading: boolean;
+  error: string;
+}) {
   const { getMyQuestions, isMyQue, setLoading, setError } =
     useContext(MyQueContext);
-  const [showMore, setShowMore] = useState(0);
+  const [showMore, setShowMore] = useState("");
   const router = useRouter();
 
   const deleteQuestion = async (qid: string) => {
@@ -30,12 +38,16 @@ export default function Questions({ questions, loading, error }: any) {
   return (
     <>
       {error && <Error error={error} />}
-      <div className={`${!loading ? "p-0" : "p-20"} border-t-2 border-[#fff1]`}>
+      <div
+        className={`${
+          !loading ? "p-0" : "p-20"
+        } border-t-2 border-[#fff1] select-text`}
+      >
         {!loading ? (
           questions.length < 1 ? (
             <div className="text-center pt-10 md:pt-4 p-4">No results.</div>
           ) : (
-            questions.map((q: any) => {
+            questions.map((q: question) => {
               return (
                 <div
                   key={q?._id}
@@ -77,7 +89,7 @@ export default function Questions({ questions, loading, error }: any) {
                         className={`bg-black text-sm absolute bottom-2 right-6 cursor-pointer opacity-0 ${
                           showMore === q?._id && "opacity-100"
                         }`}
-                        onMouseLeave={() => setShowMore(0)}
+                        onMouseLeave={() => setShowMore("")}
                       >
                         <div
                           className="p-[8px_16px] hover:bg-2 duration-300"

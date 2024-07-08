@@ -18,12 +18,11 @@ export async function POST(req: NextRequest) {
       date: Date.now(),
       imagePublicIds,
       upvotes: 0,
-      downvotes: 0,
     });
     await newAnswer.save();
 
     const allAnswers = await Answer.find({ questionId }).sort({
-      date: -1,
+      upvotes: -1,
     });
 
     await pusherServer.trigger("AnsChannel", "onAnswerChange", allAnswers);

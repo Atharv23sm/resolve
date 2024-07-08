@@ -13,7 +13,7 @@ import UploadWidget from "../components/UploadWidget";
 
 export default function Home() {
   const [question, setQuestion] = useState("");
-  const [allQuestions, setAllQuestions] = useState([]);
+  const [allQuestions, setAllQuestions] = useState([] as Array<question>);
   const [topic, setTopic] = useState([] as string[]);
   const [customTopic, setCustomTopic] = useState("");
   const [showTopics, setShowTopics] = useState(4);
@@ -77,7 +77,7 @@ export default function Home() {
 
     pusherClient.subscribe("QueChannel");
 
-    pusherClient.bind("onQuestionChange", (allQuestions: any) => {
+    pusherClient.bind("onQuestionChange", (allQuestions: Array<question>) => {
       setAllQuestions(allQuestions);
     });
 
@@ -148,7 +148,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col gap-14 items-center">
-              <UploadWidget imagePublicIds={imagePublicIds}/>
+              <UploadWidget imagePublicIds={imagePublicIds} />
               <AddButton
                 loading={loading}
                 ip={question}

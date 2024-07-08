@@ -5,7 +5,7 @@ import { useUserStore } from "@/store/user";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { MdQuestionAnswer } from "react-icons/md";
 import { pusherClient } from "@/app/lib/pusher";
-// import { BiDownvote, BiUpvote } from "react-icons/bi";
+import { BiSolidUpvote, BiUpvote } from "react-icons/bi";
 import axios from "axios";
 import ButtonLoading from "@/app/components/Loaders/ButtonLoading";
 import Error from "@/app/components/Errors/Error";
@@ -13,17 +13,23 @@ import Attachments from "@/app/components/Attachments";
 import AddButton from "@/app/components/AddButton";
 import UploadWidget from "@/app/components/UploadWidget";
 
-export default function Question({ params }: { params: { questionId: any } }) {
+export default function Question({
+  params,
+}: {
+  params: { questionId: string };
+}) {
   const [answer, setAnswer] = useState("");
-  const [allAnswers, setAllAnswers] = useState([]);
+  const [allAnswers, setAllAnswers] = useState([] as Array<answer>);
+  const [upvotedAns, setupvotedAns] = useState([] as string[]);
   const [showReplies, setShowReplies] = useState(4);
   const [question, setQuestion] = useState({
+    _id: "",
     username: "",
     question: "",
     topic: [],
     date: "",
     imagePublicIds: [],
-  });
+  } as question);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   let [imagePublicIds, setImagePublicIds] = useState([] as string[]);
@@ -33,7 +39,7 @@ export default function Question({ params }: { params: { questionId: any } }) {
     getUser: state.getUser,
   }));
 
-  async function getQuestion(qId: any) {
+  async function getQuestion(qId: string) {
     setLoading(true);
     const res = await axios.post(`${baseUrl}questions/getquestion`, { qId });
     setLoading(false);
@@ -45,8 +51,8 @@ export default function Question({ params }: { params: { questionId: any } }) {
     }
   }
 
-  async function getAllAnswers(qId: any) {
-    const res = await axios.post(`${baseUrl}questions/getanswers`, { qId });
+  async function getAllAnswers(qId: string) {
+    const res = await axios.post(`${baseUrl}answer/getanswers`, { qId });
     setLoading(false);
     if (res.data.message == "Answers found") {
       setAllAnswers(res.data.allAnswers);
@@ -56,8 +62,21 @@ export default function Question({ params }: { params: { questionId: any } }) {
     }
   }
 
+  async function getUpvotes() {
+    setLoading(true);
+    const user = await getUser();
+    const res = await axios.post(`${baseUrl}answer/getupvotes`, { user });
+    if (res.data.success) {
+      setupvotedAns(res.data.upvotedAns);
+    } else {
+      setError("Something went wrong.");
+      setTimeout(() => setError(""), 3000);
+    }
+    setLoading(false);
+  }
+
   const addAnswer = async () => {
-    const response = await axios.post(`${baseUrl}questions/addanswer`, {
+    const response = await axios.post(`${baseUrl}answer/addanswer`, {
       username: user.username,
       questionId: params.questionId,
       question: question.question,
@@ -79,18 +98,24 @@ export default function Question({ params }: { params: { questionId: any } }) {
     getAllAnswers(params.questionId);
   };
 
-  // const vote = async (votetype: string) => {
-  //   await axios.post(`${baseUrl}questions/vote`, { votetype });
-  // };
+  const upvote: (aid: string, qId: string) => Promise<void> = async (
+    aid: string,
+    qId: string
+  ) => {
+    const isUpvoted = upvotedAns.includes(aid);
+    await axios.post(`${baseUrl}answer/upvote`, { aid, qId, user, isUpvoted });
+    getUpvotes();
+  };
 
   useEffect(() => {
     getUser();
     getQuestion(params.questionId);
     getAllAnswers(params.questionId);
+    getUpvotes();
 
     pusherClient.subscribe("AnsChannel");
 
-    pusherClient.bind("onAnswerChange", (allAnswers: any) => {
+    pusherClient.bind("onAnswerChange", (allAnswers: Array<answer>) => {
       setAllAnswers(allAnswers);
     });
 
@@ -102,7 +127,9 @@ export default function Question({ params }: { params: { questionId: any } }) {
   const allAnsLen = allAnswers.length;
 
   return (
-    <div className={`md:ml-[25vw] lg:ml-[20vw] ${loading && "pt-10"}`}>
+    <div
+      className={`md:ml-[25vw] lg:ml-[20vw] select-text ${loading && "pt-10"}`}
+    >
       {error && <Error error={error} />}
       {!loading ? (
         <>
@@ -165,7 +192,7 @@ export default function Question({ params }: { params: { questionId: any } }) {
             )}
           </div>
           <div>
-            {allAnswers.slice(0, showReplies).map((a: any) => {
+            {allAnswers.slice(0, showReplies).map((a: answer) => {
               return (
                 <div
                   key={a?._id}
@@ -186,16 +213,22 @@ export default function Question({ params }: { params: { questionId: any } }) {
 
                   <Attachments att={a?.imagePublicIds} />
 
-                  {/* <div className="pt-4 flex gap-6 items-center">
-                    <div className="flex gap-1 items-center">
-                      <BiUpvote className="cursor-pointer" size={28} onClick={() => vote("up")} />{" "}
-                      {a?.upvotes}
-                    </div>
-                    <div className="flex gap-1 items-center">
-                      <BiDownvote className="cursor-pointer" size={28} onClick={() => vote("down")} />{" "}
-                      {a?.downvotes}
-                    </div>
-                  </div> */}
+                  <div className="pt-4 flex gap-1 items-center">
+                    {upvotedAns.includes(a._id) ? (
+                      <BiSolidUpvote
+                        className="cursor-pointer"
+                        size={24}
+                        onClick={() => upvote(a._id, a.questionId)}
+                      />
+                    ) : (
+                      <BiUpvote
+                        className="cursor-pointer"
+                        size={24}
+                        onClick={() => upvote(a._id, a.questionId)}
+                      />
+                    )}
+                    {a?.upvotes}
+                  </div>
                 </div>
               );
             })}

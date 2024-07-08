@@ -1,6 +1,7 @@
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModel";
+import Upvote from "@/models/upvoteModel";
 import bcryptjs from "bcryptjs";
 
 connect();
@@ -20,6 +21,9 @@ export async function POST(req: NextRequest) {
 
     const newUser = new User({ username, email, password: hashPassword });
     const savedUser = await newUser.save();
+
+    const upv = new Upvote({ username, upvotedAnswerIds: [] });
+    await upv.save();
 
     return NextResponse.json({
       message: "User registered.",

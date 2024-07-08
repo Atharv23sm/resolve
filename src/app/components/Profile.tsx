@@ -6,7 +6,7 @@ import { useUserStore } from "@/store/user";
 import Link from "next/link";
 import ButtonLoading from "./Loaders/ButtonLoading";
 
-export default function Profile({ profileVisible, setProfileVisible }: any) {
+export default function Profile({ profileVisible, setProfileVisible }:{profileVisible:boolean, setProfileVisible:any}) {
   const router = useRouter();
 
   const { user, getUser, clearUser } = useUserStore((state: any) => ({

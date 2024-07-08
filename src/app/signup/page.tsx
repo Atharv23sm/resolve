@@ -37,8 +37,8 @@ export default function SignupPage() {
         setError(response.data.error);
         setLoading(false);
       }
-    } catch (e: any) {
-      setError(e.message);
+    } catch (err: any) {
+      setError(err.message);
       setLoading(false);
     }
   };
@@ -112,9 +112,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={buttonDisabled}
-              className={`w-[250px] p-2 ${
-                !loading && "bg-5"
-              } disabled:text-8`}
+              className={`w-[250px] p-2 ${!loading && "bg-5"} disabled:text-8`}
             >
               <div>{loading ? <ButtonLoading /> : "Sign up"}</div>
             </button>

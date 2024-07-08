@@ -1,8 +1,12 @@
-"use client"
+"use client";
 import { CldUploadWidget } from "next-cloudinary";
 import { GrAttachment } from "react-icons/gr";
 
-export default function UploadWidget({imagePublicIds}: any) {
+export default function UploadWidget({
+  imagePublicIds,
+}: {
+  imagePublicIds: string[];
+}) {
   return (
     <CldUploadWidget
       uploadPreset="resolve-by-atharv"

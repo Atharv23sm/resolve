@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import Profile from "./Profile";
 
 export default function Navbar() {
-  const [profileVisible, setProfileVisible] = useState(false);
+  const [profileVisible, setProfileVisible] = useState(false as boolean);
   const router = useRouter();
 
   return (

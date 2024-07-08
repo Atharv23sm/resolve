@@ -1,7 +1,7 @@
 import { CldImage } from "next-cloudinary";
 import { useRouter } from "next/navigation";
 
-function Attachments({ att }: any) {
+function Attachments({ att }: { att: string[] }) {
   const router = useRouter();
   return (
     att.length > 0 && (

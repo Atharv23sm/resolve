@@ -11,6 +11,7 @@ export const useUserStore = create((set) => ({
     const res = await axios.get(`${baseUrl}users/getdata`);
     const user = res.data.user;
     set({ user });
+    return user;
   },
   clearUser: () => set({ user: { username: "", email: "" } }),
 }));

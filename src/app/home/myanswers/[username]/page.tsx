@@ -7,16 +7,16 @@ import ButtonLoading from "@/app/components/Loaders/ButtonLoading";
 import Error from "@/app/components/Errors/Error";
 import axios from "axios";
 
-export default function Question({ params }: { params: { username: any } }) {
+export default function Question({ params }: { params: { username: string } }) {
   const [myAnswers, setMyAnswers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [showMore, setShowMore] = useState(0);
+  const [showMore, setShowMore] = useState("" as string);
   const router = useRouter();
 
   async function getMyAnswers() {
     const username = params.username;
-    const res = await axios.post(`${baseUrl}questions/answerbyuser`, {
+    const res = await axios.post(`${baseUrl}answer/answerbyuser`, {
       username,
     });
     setLoading(false);
@@ -30,8 +30,9 @@ export default function Question({ params }: { params: { username: any } }) {
 
   const deleteAnswer = async (aid: string, questionId: string) => {
     setLoading(true);
-    const response = await axios.post(`${baseUrl}questions/deleteanswer`, {
-      aid, questionId
+    const response = await axios.post(`${baseUrl}answer/deleteanswer`, {
+      aid,
+      questionId,
     });
     if (response.data.message == "Answer deleted") {
       getMyAnswers();
@@ -48,13 +49,11 @@ export default function Question({ params }: { params: { username: any } }) {
 
   return (
     <div className={`md:ml-[25vw] lg:ml-[20vw]`}>
-      <div className={`pt-10 md:pt-4 p-4 border-b border-f2`}>
-        My Answers
-      </div>
+      <div className={`pt-10 md:pt-4 p-4 border-b border-f2`}>My Answers</div>
       {error && <Error error={error} />}
       {!loading ? (
         <div className="border-b border-f2">
-          {myAnswers.map((a: any) => {
+          {myAnswers.map((a: answer) => {
             return (
               <div
                 key={a?._id}
@@ -80,7 +79,7 @@ export default function Question({ params }: { params: { username: any } }) {
                   className={`bg-black text-sm absolute bottom-2 right-6 cursor-pointer opacity-0 ${
                     showMore === a?._id && "opacity-100"
                   }`}
-                  onMouseLeave={() => setShowMore(0)}
+                  onMouseLeave={() => setShowMore("")}
                 >
                   <div
                     className="p-[8px_16px] hover:bg-2 duration-300"
