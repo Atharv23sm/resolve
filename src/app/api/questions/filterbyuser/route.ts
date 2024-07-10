@@ -11,6 +11,7 @@ export async function POST(req: NextRequest) {
     const myQuestions = await Question.find({
       username: reqBody.username,
     }).sort({ date: -1 });
+
     return NextResponse.json({ message: "My questions found", myQuestions });
   } catch (err: any) {
     return NextResponse.json({ error: err.message });

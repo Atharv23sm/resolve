@@ -3,10 +3,10 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { baseUrl } from "@/utils/baseUrl";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import ButtonLoading from "./Loaders/ButtonLoading";
 import Error from "./Errors/Error";
 import axios from "axios";
 import { MyQueContext } from "@/helpers/useMyQueContext";
+import Skeleton from "./Loaders/Skeleton";
 
 export default function Questions({
   questions,
@@ -23,26 +23,24 @@ export default function Questions({
   const router = useRouter();
 
   const deleteQuestion = async (qid: string) => {
-    setLoading(true);
-    const response = await axios.post(`${baseUrl}questions/deletequestion`, {
-      qid,
-    });
-    if (response.data.message == "Question deleted") {
-      getMyQuestions();
-    } else {
-      setLoading(false);
-      setError(response.data.error);
+    if (confirm("Are you sure? You are deleting this answer.")) {
+      setLoading(true);
+      const response = await axios.post(`${baseUrl}questions/deletequestion`, {
+        qid,
+      });
+      if (response.data.message == "Question deleted") {
+        getMyQuestions();
+      } else {
+        setLoading(false);
+        setError(response.data.error);
+      }
     }
   };
 
   return (
     <>
       {error && <Error error={error} />}
-      <div
-        className={`${
-          !loading ? "p-0" : "p-20"
-        } border-t-2 border-[#fff1] select-text`}
-      >
+      <div className={`p-0 border-t-2 border-[#fff1] select-text`}>
         {!loading ? (
           questions.length < 1 ? (
             <div className="text-center pt-10 md:pt-4 p-4">No results.</div>
@@ -86,8 +84,8 @@ export default function Questions({
                         />
                       </div>
                       <div
-                        className={`bg-black text-sm absolute bottom-2 right-6 cursor-pointer opacity-0 ${
-                          showMore === q?._id && "opacity-100"
+                        className={`bg-black text-sm absolute bottom-2 right-6 cursor-pointer ${
+                          showMore === q?._id ? "block" : "hidden"
                         }`}
                         onMouseLeave={() => setShowMore("")}
                       >
@@ -113,7 +111,7 @@ export default function Questions({
             })
           )
         ) : (
-          <ButtonLoading />
+          <Skeleton />
         )}
       </div>
     </>

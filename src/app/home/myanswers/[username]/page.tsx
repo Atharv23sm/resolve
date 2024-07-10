@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { baseUrl } from "@/utils/baseUrl";
 import { useRouter } from "next/navigation";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import ButtonLoading from "@/app/components/Loaders/ButtonLoading";
 import Error from "@/app/components/Errors/Error";
 import axios from "axios";
+import Skeleton from "@/app/components/Loaders/Skeleton";
 
 export default function Question({ params }: { params: { username: string } }) {
   const [myAnswers, setMyAnswers] = useState([]);
@@ -29,16 +29,18 @@ export default function Question({ params }: { params: { username: string } }) {
   }
 
   const deleteAnswer = async (aid: string, questionId: string) => {
-    setLoading(true);
-    const response = await axios.post(`${baseUrl}answer/deleteanswer`, {
-      aid,
-      questionId,
-    });
-    if (response.data.message == "Answer deleted") {
-      getMyAnswers();
-    } else {
-      setLoading(false);
-      setError(response.data.error);
+    if (confirm("Are you sure? You are deleting this answer.")) {
+      setLoading(true);
+      const response = await axios.post(`${baseUrl}answer/deleteanswer`, {
+        aid,
+        questionId,
+      });
+      if (response.data.message == "Answer deleted") {
+        getMyAnswers();
+      } else {
+        setLoading(false);
+        setError(response.data.error);
+      }
     }
   };
 
@@ -76,8 +78,8 @@ export default function Question({ params }: { params: { username: string } }) {
                   />
                 </div>
                 <div
-                  className={`bg-black text-sm absolute bottom-2 right-6 cursor-pointer opacity-0 ${
-                    showMore === a?._id && "opacity-100"
+                  className={`bg-black text-sm absolute bottom-2 right-6 cursor-pointer ${
+                    showMore === a?._id ? "block" : "hidden"
                   }`}
                   onMouseLeave={() => setShowMore("")}
                 >
@@ -101,7 +103,7 @@ export default function Question({ params }: { params: { username: string } }) {
           })}
         </div>
       ) : (
-        <ButtonLoading />
+        <Skeleton />
       )}
     </div>
   );
